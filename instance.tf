@@ -8,7 +8,7 @@ resource random_string "password" {
 
 resource azurerm_linux_virtual_machine "linux_machine" {
   admin_username                  = "terragoat-linux"
-  admin_password                  = random_string.password.result
+  admin_password                  = admin_ssh_key
   location                        = var.location
   name                            = "terragoat-linux"
   network_interface_ids           = [azurerm_network_interface.ni_linux.id]
