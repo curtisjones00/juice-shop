@@ -10,3 +10,4 @@ jobs:
       - run: npm ci
       - snyk/scan
 workflows: null
+
