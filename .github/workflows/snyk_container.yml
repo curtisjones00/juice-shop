@@ -5,7 +5,7 @@ on:
     branches:
     - master
 env:
-  SNYK_TOKEN: 235b5f12-dbe3-4b8a-8ba9-546b37e74cd6
+  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
 jobs:
   Pipeline-Job:
@@ -13,7 +13,7 @@ jobs:
     name: 'Snyk Test'
     runs-on: ubuntu-latest
     env: 
-      SNYK_TOKEN: 235b5f12-dbe3-4b8a-8ba9-546b37e74cd6
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
        
     steps:
     # Checkout Code
