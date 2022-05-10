@@ -4,16 +4,13 @@ on:
   push:
     branches:
     - master
-env:
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
 
 jobs:
   Pipeline-Job:
     # Configure Environment
     name: 'Snyk Test'
     runs-on: ubuntu-latest
-    env: 
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
        
     steps:
     # Checkout Code
@@ -22,6 +19,8 @@ jobs:
 
     # Install and Authenticate to Snyk
     - name: Install Snyk & Authenticate
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       run: |
          sudo npm install -g snyk
          snyk auth ${{ secrets.SNYK_TOKEN }}
