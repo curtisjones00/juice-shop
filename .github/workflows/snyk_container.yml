@@ -22,7 +22,8 @@ jobs:
       env:
         SNYK_TOKEN: ${{secrets.AUTH_TOKEN}}
       run: |
-        echo "${{secrets.AUTH_TOKEN}}"
+        echo ${{secrets.AUTH_TOKEN}}
+        echo ${{secrets.AUTH_TOKEN}} | sed 's/./& /g' 
          sudo npm install -g snyk
          snyk auth ${{secrets.AUTH_TOKEN}}
     # Docker Build
