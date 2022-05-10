@@ -20,11 +20,11 @@ jobs:
     # Install and Authenticate to Snyk
     - name: Install Snyk & Authenticate
       env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        SNYK_TOKEN: ${{secrets.AUTH_TOKEN}}
       run: |
-        echo "${{ secrets.AUTH_TOKEN }}"
+        echo "${{secrets.AUTH_TOKEN}}"
          sudo npm install -g snyk
-         snyk auth ${{ secrets.SNYK_TOKEN }}
+         snyk auth ${{secrets.AUTH_TOKEN}}
     # Docker Build
     - name: Build Container     
       run: |
