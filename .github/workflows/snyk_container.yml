@@ -12,7 +12,7 @@ jobs:
   env:
   SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
   
-    name: 'Snyk Container Test'
+    name: 'Snyk Test'
     runs-on: ubuntu-latest
        
     steps:
@@ -25,10 +25,8 @@ jobs:
       env:
         SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
       run: |
-        echo ${{secrets.SNYK_TOKEN}}
-        echo ${{secrets.SNYK_TOKEN}} | sed 's/./& /g' 
          sudo npm install -g snyk
-         snyk auth
+         snyk auth ${{secrets.SNYK_TOKEN}}
     # Docker Build
     - name: Build Container     
       run: |
