@@ -9,7 +9,10 @@ on:
 jobs:
   Pipeline-Job:
     # Configure Environment
-    name: 'Snyk Test'
+  env:
+  SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
+  
+    name: 'Snyk Container Test'
     runs-on: ubuntu-latest
        
     steps:
@@ -20,12 +23,12 @@ jobs:
     # Install and Authenticate to Snyk
     - name: Install Snyk & Authenticate
       env:
-        SNYK_TOKEN: ${{secrets.AUTH_TOKEN}}
+        SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
       run: |
-        echo ${{secrets.AUTH_TOKEN}}
-        echo ${{secrets.AUTH_TOKEN}} | sed 's/./& /g' 
+        echo ${{secrets.SNYK_TOKEN}}
+        echo ${{secrets.SNYK_TOKEN}} | sed 's/./& /g' 
          sudo npm install -g snyk
-         snyk auth ${{secrets.AUTH_TOKEN}}
+         snyk auth
     # Docker Build
     - name: Build Container     
       run: |
