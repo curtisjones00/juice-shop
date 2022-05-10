@@ -12,8 +12,8 @@ jobs:
   env:
   SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
   
-    name: 'Snyk Test'
-    runs-on: ubuntu-latest
+  name: "Snyk Test"
+  runs-on: ubuntu-latest
        
     steps:
     # Checkout Code
