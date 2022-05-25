@@ -1,5 +1,5 @@
 resource "azurerm_managed_disk" "example" {
-  name                 = "terragoat-disk-${var.environment}"
+  name                 = "terra-disk-${var.environment}"
   location             = var.location
   resource_group_name  = azurerm_resource_group.example.name
   storage_account_type = "Standard_LRS"
@@ -12,10 +12,10 @@ resource "azurerm_managed_disk" "example" {
     git_commit           = "d68d2897add9bc2203a5ed0632a5cdd8ff8cefb0"
     git_file             = "terraform/azure/storage.tf"
     git_last_modified_at = "2020-06-16 14:46:24"
-    git_last_modified_by = "nimrodkor@gmail.com"
-    git_modifiers        = "nimrodkor"
-    git_org              = "bridgecrewio"
-    git_repo             = "terragoat"
+    git_last_modified_by = "curtisjones00@gmail.com"
+    git_modifiers        = "SticksNJones"
+    git_org              = "Snyker"
+    git_repo             = "Terra"
     yor_trace            = "d17da7b3-f1c5-4723-9f77-d1b9069459c7"
   }
 }
@@ -51,10 +51,10 @@ resource "azurerm_storage_account" "example" {
     git_commit           = "5c6b5d60a8aa63a5d37e60f15185d13a967f0542"
     git_file             = "terraform/azure/storage.tf"
     git_last_modified_at = "2021-05-02 10:06:10"
-    git_last_modified_by = "nimrodkor@users.noreply.github.com"
-    git_modifiers        = "Adin.Ermie/nimrodkor"
-    git_org              = "bridgecrewio"
-    git_repo             = "terragoat"
+    git_last_modified_by = "curtis.jones@gmail.com"
+    git_modifiers        = "Sticks.Jones/git"
+    git_org              = "terra"
+    git_repo             = "terra"
     yor_trace            = "23861ff4-c42d-495e-80ac-776c74035f43"
   }
 }
