@@ -15,6 +15,7 @@ resource azurerm_linux_virtual_machine "linux_machine" {
   resource_group_name             = azurerm_resource_group.example.name
   size                            = "Standard_F2"
   disable_password_authentication = false
+  }
   source_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"

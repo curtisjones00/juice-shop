@@ -1,20 +1,19 @@
-name: "Snyk Container Test"
+name: 'Snyk Container Test'
 
 on:
   push:
     branches:
     - master
 
+
 jobs:
-  Pipeline-Job:
-    # Configure Environment
-    name: 'Snyk Test'
+  snyk:
+    name: 'Snyk Test'  
     runs-on: ubuntu-latest
-    env: 
-      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-       
+    env:
+      SNYK_TOKEN: ${{secrets.SNYK_TOKEN}}
     steps:
-    # Checkout Code
+# Checkout Code
     - name: Checkout Code
       uses: actions/checkout@v1
 
@@ -22,33 +21,17 @@ jobs:
     - name: Install Snyk & Authenticate
       run: |
          sudo npm install -g snyk
-         snyk auth ${SNYK_TOKEN}
     # Docker Build
     - name: Build Container     
       run: |
-         docker build .  -t michaelbraunbass/juiceshop:main
+         docker build .  -t curtisjones00/snyk-juice-shop:latest
     # Run Snyk Container     
     - name: Run Snyk Container
       run: |
-         snyk container test --file=Dockerfile michaelbraunbass/juiceshop:main  --severity-threshold=high
-         snyk container monitor michaelbraunbass/juiceshop:main
+         snyk container test --file=Dockerfile curtisjones00/snyk-juice-shop:latest --severity-threshold=high --sarif > snyk.sarif
       continue-on-error: true  
-
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
       
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v1
-             
-    - name: Login to DockerHub
-      uses: docker/login-action@v1 
+    - name: Upload result to GitHub Code Scanning
+      uses: github/codeql-action/upload-sarif@v1
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build and push
-      id: docker_build
-      uses: docker/build-push-action@v2
-      with:
-        push: true
-        tags: michaelbraunbass/juiceshop:main
+        sarif_file: snyk.sarif

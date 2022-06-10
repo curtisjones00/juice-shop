@@ -26,7 +26,6 @@ jobs:
          snyk auth ${SNYK_TOKEN}
          npm install
          rm package-lock.json
-
     # Run Snyk Open Source
     - name: Run Snyk Open Source
       run: |
