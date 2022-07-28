@@ -1,6 +1,6 @@
 name: "SnykJar Test"
 env:
-  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  SNYK_TOKEN: 6aae8c86-55aa-4106-a51d-011f71911713
   
 on:
   push:
