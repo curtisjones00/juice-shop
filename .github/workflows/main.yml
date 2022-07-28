@@ -1,6 +1,4 @@
 name: "SnykJar Test"
-env:
-  SNYK_TOKEN: 6aae8c86-55aa-4106-a51d-011f71911713
   
 on:
   push:
@@ -37,5 +35,7 @@ jobs:
     # Run Snyk Code
     - name: Running Snyk Code on JARs
       run: |
-         snyk test --scan-all-unmanaged  
+         snyk test --scan-all-unmanaged
+      env: 
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       # continue-on-error: true
