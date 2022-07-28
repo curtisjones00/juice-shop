@@ -27,7 +27,7 @@ jobs:
     
     # Install Maven
     - name: Setup Maven Action
-      uses: s4u/setup-maven-action@3.8.5
+      uses: s4u/setup-maven-action@v1.2.1
       with:
           java-version: 8
           maven-version: 3.8.5
